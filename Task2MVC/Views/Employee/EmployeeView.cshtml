@@ -1,0 +1,123 @@
+﻿@model VmEmployee
+@{
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section Body{
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-xs-4" style="margin-top: 50px; font-size: 50px; font-weight: bold;">
+                Employee
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:25px;">
+            <div class="col-xs-1">First Name</div>
+            <div class="col-xs-3">
+                <input type="hidden" asp-for="employee.ID" />
+                <input type="text" class="form-control" asp-for="employee.FirstName" />
+            </div>
+            <div class="col-xs-1">Last Name</div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" asp-for="employee.LastName"/>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:25px; margin-top:15px;">
+            <div class="col-xs-1">Phone </div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" asp-for="employee.Phone"/>
+            </div>
+            <div class="col-xs-1">
+                Gender
+            </div>
+            <div class="col-xs-1">
+                <select class="form-control" asp-for="employee.Gender">
+                    <option value="Select">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="margin-left:25px; margin-top:15px;">
+            <div class="col-xs-1">
+                Country
+            </div>
+            <div class="col-xs-1">
+                <select class="form-control" asp-for="employee.Country_Id"  asp-items='new SelectList (Model.LiCountry,"ID","Name")'>
+                </select>
+            </div>
+
+            <div class="col-xs-1" style="margin-left:207px;">
+                City
+            </div>
+            <div class="col-xs-1">
+                <select class="form-control" asp-for="employee.city_Id"  asp-items='new SelectList (Model.LiCity,"ID","Name")'>
+                </select>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:25px; margin-top:15px;">
+            <div class="col-xs-1">Address</div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" asp-for="employee.Address"/>
+            </div>
+            <div class="col-xs-1">Email</div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" asp-for="employee.Email"/>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:25px; margin-top:15px;">
+            <div class="col-xs-1">Salary</div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" asp-for="employee.Salary"/>
+            </div>
+            <div class="col-xs-1">Expected Salary</div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" asp-for="employee.ExpectedSalary" />
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:25px; margin-top:15px;">
+            <div class="col-xs-1">
+                Department
+            </div>
+            <div class="col-xs-1">
+                <select class="form-control" asp-for="employee.Dept_Id"  asp-items='new SelectList (Model.LiDepartment,"ID","Name")'>
+                </select>
+            </div>
+            <div class="col-xs-1" style="margin-left:207px;">
+                HireDate
+            </div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" asp-for="employee.HireDate"/>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:25px; margin-top:15px;">
+            <div class="col-xs-1">
+                Image URL
+            </div>
+
+            <input type="file" id="Image" asp-for="employee.Image" style="display:none;" />
+            <label for="Image" class="btn btn-primary">Upload Your Picture</label>
+           @if (ViewBag.x == false)
+           {
+
+                <div class="col-xs-1">
+                    <input type="submit" value="Update" class="btn" style="margin-left: 970px;" asp-action="Update" />
+                </div>
+           }
+                else
+           {
+                <div class="col-xs-1">
+                    <input type="submit" value="Save" class="btn" style="margin-left: 970px;" asp-action="SaveNewEmployee" />
+                </div>
+            }
+           
+
+            
+        </div>
+    </form>
+}

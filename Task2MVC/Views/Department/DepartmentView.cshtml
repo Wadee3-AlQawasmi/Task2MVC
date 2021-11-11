@@ -1,0 +1,32 @@
+﻿@model Department
+@{
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section Body{
+
+    <form method="post">
+        <div class="row">
+            <div class="col-xs-4" style="margin-top: 50px; font-size: 50px; font-weight: bold;">
+                Department
+            </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+            <div class="col-xs-1">Name</div>
+            <div class="col-xs-4">
+              <input type="hidden" asp-for="ID" />
+                <input type="text" class="form-control" asp-for="Name" />
+            </div>
+            <div class="col-xs-1">Description</div>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" asp-for="Description" />
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Save" class="btn" style="margin-left: 1100px;" asp-action="SaveNewDepartment"/>
+        </div>
+    </form>
+    
+
+
+
+    }
